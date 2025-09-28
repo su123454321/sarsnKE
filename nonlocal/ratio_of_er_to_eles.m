@@ -1,6 +1,6 @@
 clear;clc
-load('F:\DATA\Data\ER\E_gmm_all.mat')
-load('F:\DATA\Data\ER\E_gm24y.mat')
+load('D:\nonlocal KE cascade Data\ER\E_gmm_all.mat')
+load('D:\nonlocal KE cascade Data\ER\E_gm24y.mat')
 
 interval=0.25;
 dtt=0.25:interval:12;
@@ -22,16 +22,21 @@ grid on
 colororder({'#DA5953','#1975BA'})
 yyaxis left
 plot(kkk./aa,ratio1,'LineWidth',2,'Color','#DA5953')
-xlabel('$ \it{K} $(cpkm)','Interpreter','latex','fontsize',12,'FontName','Times New Roman');
+xlabel('$ \it{K} $(cpkm)','Interpreter','latex','fontsize',15,'FontName','Times New Roman');
+set(gca,'YTick',0:2:14);
+ylim([0 14])
 % ylabel('$ KE_{R}/KE_{S} $','Interpreter','latex','fontsize',12,'FontName','Times New Roman');
 
 yyaxis right
 plot(kkk./aa,ratio2,'LineWidth',2,'Color','#1975BA')
+set(gca,'YTick',0:0.1:.7);
+xlim([0 0.02])
+ylim([0 0.7])
 % ylabel('$ KE_{R}/KE_{L} $','Interpreter','latex','fontsize',12,'FontName','Times New Roman');
 
-legend('KE_{R}/KE_{S}','KE_{R}/KE_{L}','location','east')
-set(gca,'FontSize',12,'FontWeight','Bold','FontName','Times New Roman')
-title('Global','fontsize',16,'fontweight','bold','FontName','Times New Roman')
+legend('KE_{R}^{g}/KE_{S}^{g}','KE_{R}^{g}/KE_{L}^{g}','location','northeast')
+set(gca,'FontSize',15,'FontWeight','Bold','FontName','Times New Roman')
+title('Global','fontsize',20,'fontweight','bold','FontName','Times New Roman')
 
-% savefig('C:\Users\1\Desktop\陈儒nonlocal论文\figure\fig\ratio.fig')
-% exportgraphics(gcf,'C:\Users\1\Desktop\陈儒nonlocal论文\figure\jpg\ratio.jpg','Resolution',300)
+% savefig('C:\Users\1\Desktop\陈儒nonlocal论文\figure\fig\ratio_g.fig')
+% exportgraphics(gcf,'C:\Users\1\Desktop\陈儒nonlocal论文\figure\jpg\ratio_g.jpg','Resolution',300)

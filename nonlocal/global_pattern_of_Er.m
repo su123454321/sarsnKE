@@ -1,5 +1,5 @@
 clear;clc
-load('D:\DATA\Data\ER\ER_24y.mat')
+load('D:\nonlocal KE cascade Data\ER\ER_24y.mat')
 %% 
 dt=0.125; 
 interval=0.25;
@@ -42,12 +42,12 @@ caxis([-10 10]);
 colormap(othercolor('BuDRd_18'));
 %   colormap(othercolor('GnBu9'));
 % colormap(color);
-m_grid('linestyle','none','linewidth',1.2,'tickdir','out','xaxisloc',...
+m_grid('linestyle','none','linewidth',1.2,'xaxisloc',...
     'bottom','yaxisloc','left','fontsize',24);
 hold on;m_coast('patch',[.7 .7 .7],'edgecolor','k');
 set(gca,'LineWidth',1.5);
 set(gcf,'color','w','Position',get(0,'ScreenSize'));  
-title('(A)  Global distribution of KE_R, spatial scale=1°','fontsize',36,...
+title('Geostrophic residual kinetic energy','fontsize',42,...
     'fontweight','bold','FontName','Times New Roman')
 hold on
 for rr=1:7    

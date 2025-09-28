@@ -1,8 +1,8 @@
 clear;clc
-load(strcat('D:\pais_and_js\Pil24ym.mat'),'pil_24ym')
-load(strcat('D:\pais_and_js\Pis24ym.mat'),'pis_24ym')
-load(strcat('D:\pais_and_js\Pir24ym.mat'),'pir_24ym')
-load('D:\pais_and_js\pi_gmm_all.mat','piL_gmm','piS_gmm','piR_gmm')
+load(strcat('F:\nonlocal KE cascade Data\pais_and_js\Pil24ym.mat'),'pil_24ym')
+load(strcat('F:\nonlocal KE cascade Data\pais_and_js\Pis24ym.mat'),'pis_24ym')
+load(strcat('F:\nonlocal KE cascade Data\pais_and_js\Pir24ym.mat'),'pir_24ym')
+load('F:\nonlocal KE cascade Data\pais_and_js\pi_gmm_all.mat','piL_gmm','piS_gmm','piR_gmm')
 
 %%
 dt=0.125; 
@@ -126,7 +126,8 @@ for i = 1:12
     ind0 = sum(~isnan(squeeze(pir_24ym(:,:,4*i))), 'all'); % 统计非 NaN 值
     ratio1 = find(abs(squeeze(pir_24ym(:,:,4*i)))./abs(pil(i)) > 0.1);
     ratio2 = find(abs(squeeze(pir_24ym(:,:,4*i)))./abs(pis(i)) > 0.1);
-    ratio3 = find(abs(squeeze(pir_24ym(:,:,4*i)))./(abs(pil(i))+abs(pis(i)))./2 > 0.1);
+    % ratio3 = find(abs(squeeze(pir_24ym(:,:,4*i)))./(abs(pil(i))+abs(pis(i)))./2 > 0.1);
+    ratio3 = find(abs(squeeze(pir_24ym(:,:,4*i)))./(abs(pil_24ym(:,:,4*i))+abs(pis_24ym(:,:,4*i)))./2 > 0.1);
     ind1 = find(abs(squeeze(pir_24ym(:,:,4*i))) > 1e-07); % 统计满足阈值条件的元素
     number(1,i) = numel(ratio1) ./ ind0; % 计算比例
     number(2,i) = numel(ratio2) ./ ind0;
@@ -136,18 +137,23 @@ end
 
 % 创建图形
 figure
-plot(1:12, number(3,:), 'Color', '#B22222', 'LineStyle', '-', 'LineWidth', 2, 'Marker', 'o', 'MarkerFaceColor', '#B22222');
+plot(1:12, number(3,:)*100, 'Color', '#B22222', 'LineStyle', '-', 'LineWidth', 2, 'Marker', 'o', 'MarkerFaceColor', '#B22222');
 set(gca, 'FontSize', 12,'FontName','times new roman');
 set(gcf,"Position",[617.8000000000001 529 526.4 281.6])
 xlim([1, 12]); 
 % ylim([0.75, 0.95]); 
 xticks(1:2:12)
 xlabel('   (degree)','FontName','times new roman');
-ylabel('\it{I_n}', 'FontName', 'Times New Roman','FontWeight', 'Bold');
+ylabel('Percentage (%)', 'FontName', 'Times New Roman','FontWeight', 'Bold');
+title('Percentage of imbalanced region in the global ocean', 'FontName', 'Times New Roman', 'FontSize', 15);
 grid on;
 hold on
-plot(1:12, 0.98*ones(1,12),'color',[.5 .5 .5],'LineStyle','--','LineWidth',1)
-text(2,0.96,'\it I_{n}=0.98')
+plot(1:12, 98*ones(1,12),'color',[.5 .5 .5],'LineStyle','--','LineWidth',1)
+text(2,97,'\it 98%','FontName','times new roman','FontWeight','bold')
+% savefig('C:\Users\1\Desktop\陈儒nonlocal论文\figure\fig\ratio_pir.fig')
+% exportgraphics(gcf,'C:\Users\1\Desktop\陈儒nonlocal论文\figure\jpg\ratio_pir.jpg','Resolution',300)
+
+
 
 
 

@@ -1,15 +1,13 @@
 clear;clc
-load('D:\DATA\Data\ER\EL_24y.mat')
-load('D:\DATA\Data\ER\ES_24y.mat')
-load('D:\DATA\Data\ER\ER_24y.mat')
+load('D:\data\pe\pe_avg_2013.mat')
 %% 
 dt=0.125; 
 interval=0.25;
-dtt=0.25:interval:12;
+dtt=0.25:interval:10;
 lon=(1/8):(1/4):360;lat=(-90+1/8):(1/4):90;%全球，1/4度分辨率
 loni=lon(1:4:1440);lati=lat(1:4:720);
 [y,x]=meshgrid(lati,loni);
-lon1=interp1(lon,1:0.5:1440);lat1=interp1(lat,1:0.5:720);
+lon1=0.0625:1/8:360;lat1=-89.9375:1/8:89.9375;
 [y0,x0]=meshgrid(lat1,lon1);
 %% 分离区域
 i1=find(loni>150 & loni<225);
@@ -34,12 +32,12 @@ j7=find(lati>-65 & lati<-40);y7=y(i7,j7);%南大洋-大西洋
 %% 绘制1° El global pattern
 figure
 m_proj('equidistant cylindrical','lon',[0 360],'lat',[-80 80]);hold on;
-m_pcolor(x0,y0,EL_24ym(:,:,4));shading flat; 
+m_pcolor(x0,y0,pe(:,:,4));shading flat; 
 c=colorbar('fontsize',28,'fontweight','bold');
 set(get(c,'Title'),'string','J/m^3');
 set(gca,'ColorScale','log')
 c.Label.FontSize = 28;
-caxis([0.1 1e2]);  
+caxis([1e02 1e4]);  
 %  colormap(othercolor('YlOrBr9'));
 colormap(othercolor('BuDRd_18'));
 %   colormap(othercolor('GnBu9'));
@@ -49,22 +47,22 @@ m_grid('linestyle','none','linewidth',1.2,'xaxisloc',...
 hold on;m_coast('patch',[.7 .7 .7],'edgecolor','k');
 set(gca,'LineWidth',1.5);
 set(gcf,'color','w','Position',get(0,'ScreenSize'));  
-title('Large-scale Kinetic Energy KE_L','fontsize',36,...
+title('Large-scale PE','fontsize',36,...
     'fontweight','bold','FontName','Times New Roman')
-hold on
-for rr=1:7    
-    eval(['xx=loni(i',num2str(rr),'(1));'])
-    eval(['yy=lati(j',num2str(rr),'(1));'])
-    eval(['len1=length(i',num2str(rr),');'])
-    eval(['len2=length(j',num2str(rr),');'])  
-    
-    m_rectangle(xx,yy,len1,len2,1,'color','k','LineWidth',3);    
-    %        m_text(xx1,yy1,[num2str(climate),num2str(rr)],'color','#4DBEEE','fontsize',10)
-    hold on  
-end
+% hold on
+% for rr=1:7    
+%     eval(['xx=loni(i',num2str(rr),'(1));'])
+%     eval(['yy=lati(j',num2str(rr),'(1));'])
+%     eval(['len1=length(i',num2str(rr),');'])
+%     eval(['len2=length(j',num2str(rr),');'])  
+% 
+%     m_rectangle(xx,yy,len1,len2,1,'color','k','LineWidth',3);    
+%     %        m_text(xx1,yy1,[num2str(climate),num2str(rr)],'color','#4DBEEE','fontsize',10)
+%     hold on  
+% end
 
-savefig('C:\Users\1\Desktop\陈儒nonlocal论文\figure\fig\El_1d.fig')
-exportgraphics(gcf,'C:\Users\1\Desktop\陈儒nonlocal论文\figure\jpg\El_1d.jpg','Resolution',300)
+% savefig('C:\Users\1\Desktop\陈儒nonlocal论文\figure\fig\El_1d.fig')
+% exportgraphics(gcf,'C:\Users\1\Desktop\陈儒nonlocal论文\figure\jpg\El_1d.jpg','Resolution',300)
 %% 绘制1° Es global pattern
 figure
 m_proj('equidistant cylindrical','lon',[0 360],'lat',[-80 80]);hold on;
