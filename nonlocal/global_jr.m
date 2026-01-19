@@ -27,18 +27,18 @@ jj3 = find(lati >= -54 & lati <= -50);
 % pir=pil-pis;
 % [pir_max, ind] = max(pir);
 
-resolution1=1;%几度
-t1=resolution1./0.25;%平均倍数
+resolution1=1;
+t1=resolution1./0.25;
 tt1=t1.*t1;
 h1=ones(t1,t1)/tt1;
 
-resolution2=5;%几度
-t2=resolution2./0.25;%平均倍数
+resolution2=5;
+t2=resolution2./0.25;
 tt2=t2.*t2;
 h2=ones(t2,t2)/tt2;
 
-resolution=4;%几度
-t=resolution./0.25;%平均倍数
+resolution=4;
+t=resolution./0.25;
 tt=t.*t;
 h=ones(t,t)/tt;
 % mke=nanconv(squeeze(pir_24ym(:,:,ind)),h,'edge','nanout');
@@ -57,11 +57,9 @@ set(gcf,"Position",[141 292.2 1472.8 651.2]);
 
 % ha=tight_subplot(1,2,[0.1 0.02],[.1 .1],[.1 .1]);
 
-% 载入 colormap
 load('E:\matlab\toolbox\colorbardata_cmocean\balance-rgb.mat')
 color3 = color(50:206,:);
 
-% 设定统一的 clim 以确保颜色一致
 clim_range = [-5e-5 5e-5];
 % 
 % axes(ha(1));
@@ -95,7 +93,7 @@ colormap(color3);
 clim(clim_range);
 % set(ha(2),'YTickLabel','none');
 
-c = colorbar;  % 可以改成 'southoutside' 放到底部
+c = colorbar; 
 c.Location = 'eastoutside';
 c.FontSize = 15;
 c.FontWeight = 'bold';

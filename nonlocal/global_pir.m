@@ -122,17 +122,14 @@ pil1 = nanconv(squeeze(pil_24ym(:,:,4)),h,'edge','nanout');
 % pil2 = squeeze(pil_24ym(:,:,40));
 pil2 = nanconv(squeeze(pil_24ym(:,:,20)),h,'edge','nanout');
 
-% 创建 figure
 figure;
 set(gcf,"Position",[141 292.2 1472.8 651.2]);
 
 ha=tight_subplot(1,2,[0.1 0.02],[.1 .1],[.1 .1]);
 
-% 载入 colormap
 load('E:\matlab\toolbox\colorbardata_cmocean\balance-rgb.mat')
 color3 = color(50:206,:);
 
-% 设定统一的 clim 以确保颜色一致
 clim_range = [-5e-6 5e-6];
 
 axes(ha(1));
@@ -154,13 +151,13 @@ colormap(color3);
 clim(clim_range);
 % set(ha(2),'YTickLabel','none');
 
-% c = colorbar;  % 可以改成 'southoutside' 放到底部
+% c = colorbar; 
 % c.Location = 'southoutside';
 % c.FontSize = 15;
 % c.FontWeight = 'bold';
 % c.Limits = clim_range;
 % c.Ticks = [-5e-6 -2.5e-6 0 2.5e-6 5e-6];
-% c.Label.String = 'W/m^3';  % 设置 colorbar 标注
+% c.Label.String = 'W/m^3'; 
 % c.TickLength = 0.005;
 % c.Position = [0.098316132536665 0.15970515970516 0.80228136882129 0.031510236826912];
 savefig('C:\Users\1\Desktop\陈儒nonlocal论文\figure\fig\pil_4°running_average.fig')
@@ -170,17 +167,14 @@ exportgraphics(gcf,'C:\Users\1\Desktop\陈儒nonlocal论文\figure\jpg\pil_4°ru
 pis1 = nanconv(squeeze(pis_24ym(:,:,4)),h,'edge','nanout');
 pis2 = nanconv(squeeze(pis_24ym(:,:,20)),h,'edge','nanout');
 
-% 创建 figure
 figure;
 set(gcf,"Position",[141 292.2 1472.8 651.2]);
 
 ha=tight_subplot(1,2,[0.1 0.02],[.1 .1],[.1 .1]);
 
-% 载入 colormap
 load('E:\matlab\toolbox\colorbardata_cmocean\balance-rgb.mat')
 color3 = color(50:206,:);
 
-% 设定统一的 clim 以确保颜色一致
 clim_range = [-5e-6 5e-6];
 
 axes(ha(1));
@@ -208,17 +202,14 @@ exportgraphics(gcf,'C:\Users\1\Desktop\陈儒nonlocal论文\figure\jpg\pis_4°ru
 pir1 = nanconv(squeeze(pir_24ym(:,:,4)),h,'edge','nanout');
 pir2 = nanconv(squeeze(pir_24ym(:,:,20)),h,'edge','nanout');
 
-% 创建 figure
 figure;
 set(gcf,"Position",[141 292.2 1472.8 651.2]);
 
 ha=tight_subplot(1,2,[0.1 0.02],[.1 .1],[.1 .1]);
 
-% 载入 colormap
 load('E:\matlab\toolbox\colorbardata_cmocean\balance-rgb.mat')
 color3 = color(50:206,:);
 
-% 设定统一的 clim 以确保颜色一致
 clim_range = [-5e-6 5e-6];
 
 axes(ha(1));
@@ -240,13 +231,13 @@ colormap(color3);
 clim(clim_range);
 % set(ha(2),'YTickLabel','none');
 
-c = colorbar;  % 可以改成 'southoutside' 放到底部
+c = colorbar;  
 c.Location = 'southoutside';
 c.FontSize = 15;
 c.FontWeight = 'bold';
 c.Limits = clim_range;
 c.Ticks = [-5e-6 -2.5e-6 0 2.5e-6 5e-6];
-c.Label.String = 'W/m^3';  % 设置 colorbar 标注
+c.Label.String = 'W/m^3';  
 c.TickLength = 0.005;
 c.Position = [0.098316132536665 0.124078624078624 0.80228136882129 0.031510236826912];
 savefig('C:\Users\1\Desktop\陈儒nonlocal论文\figure\fig\pir_4°running_average.fig')

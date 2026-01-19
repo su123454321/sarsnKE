@@ -9,17 +9,12 @@ load('C:\Users\1\Desktop\陈儒nonlocal论文\nonlocality程序\cd_smalledSou.ma
 num_years = 24;
 num_months_per_year = 12;
 num_wavenumbers = 48;
-monthly_data = jr_altsou; % Your 288x48 matrix
+monthly_data = jr_altsou; 
 
-% 2. Reshape the 2D matrix into a 3D matrix
-% The new dimensions will be (months, years, wavenumbers)
-% This groups the 12 months for each year together.
 data_3d = reshape(monthly_data, num_months_per_year, num_years, num_wavenumbers);
 
-% 3. Calculate the mean along the first dimension (the 'months' dimension)
 yearly_data_reshaped_3d = mean(data_3d, 1);
 
-% 4. The result is now 1x24x48. Use squeeze() to remove the singleton dimension.
 yearly_data_reshaped = squeeze(yearly_data_reshaped_3d);
 jr_altsouy = yearly_data_reshaped;
 

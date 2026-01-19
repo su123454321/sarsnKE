@@ -17,7 +17,6 @@ end
 
 percentage_jr = zeros(1, 12);
 
-fprintf('开始计算...\n');
 for i = 1:12
     scale_index = 4 * i;
 
@@ -40,7 +39,7 @@ for i = 1:12
 
     count_A = sum(condition_A_mask, 'all');
 
-    % 条件B (已修改): JR的贡献大于pir的30% (不使用global_JR_mask)
+    % 条件B: JR的贡献大于pir的30% 
     condition_B_mask = abs(jr_slice) > 0.3 * abs(pir_slice);
 
     combined_mask = condition_A_mask & condition_B_mask;
@@ -57,8 +56,6 @@ for i = 1:12
 end
 
 %% 3. 结果可视化 ---
-
-disp('所有尺度计算完成。');
 disp('最终百分比向量:');
 disp(percentage_jr);
 

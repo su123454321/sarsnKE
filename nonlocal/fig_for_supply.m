@@ -26,7 +26,6 @@ set(gcf,'color','w');
 load('E:\matlab\toolbox\colorbardata_cmocean\balance-rgb.mat')
 color3 = color(50:206,:);
 
-% 设定统一的 clim 以确保颜色一致
 clim_range = [-5 5];
 % set(gcf,'Units','centimeters','Position',[5 5 20 16])
 m_proj('miller','lon',[0 360],'lat',[-80 80]);hold on;
@@ -37,14 +36,14 @@ m_coast('patch',[.7 .7 .7],'edgecolor','k');
 colormap(color3);
 clim(clim_range);
 
-c = colorbar;  % 可以改成 'southoutside' 放到底部
+c = colorbar; 
 c.Location = 'eastoutside';
 c.FontSize = 11;
 c.FontWeight = 'bold';
 c.Limits = clim_range;
 c.Ticks = [-5 -2.5 0 2.5 5];
 c.TickLength = 0.005;
-c.Title.String = '\muW/m^3';  % 设置 colorbar 标注
+c.Title.String = '\muW/m^3';  
 c.Title.Position = [17 176.9304802261237 0];
 
 savefig('C:\Users\1\Desktop\陈儒nonlocal论文\figure\fig\supply\l-11deg.fig')
@@ -58,7 +57,6 @@ set(gcf,'color','w');
 load('E:\matlab\toolbox\colorbardata_cmocean\balance-rgb.mat')
 color3 = color(50:206,:);
 
-% 设定统一的 clim 以确保颜色一致
 clim_range = [-5 5];
 % set(gcf,'Units','centimeters','Position',[5 5 20 16])
 m_proj('miller','lon',[0 360],'lat',[-80 80]);hold on;
@@ -69,14 +67,14 @@ m_coast('patch',[.7 .7 .7],'edgecolor','k');
 colormap(color3);
 clim(clim_range);
 
-c = colorbar;  % 可以改成 'southoutside' 放到底部
+c = colorbar; 
 c.Location = 'eastoutside';
 c.FontSize = 11;
 c.FontWeight = 'bold';
 c.Limits = clim_range;
 c.Ticks = [-5 -2.5 0 2.5 5];
 c.TickLength = 0.005;
-c.Title.String = '\muW/m^3';  % 设置 colorbar 标注
+c.Title.String = '\muW/m^3';  
 c.Title.Position = [17 176.9304802261237 0];
 
 savefig('C:\Users\1\Desktop\陈儒nonlocal论文\figure\fig\supply\s-11deg.fig')
@@ -89,7 +87,6 @@ set(gcf,'color','w');
 load('E:\matlab\toolbox\colorbardata_cmocean\balance-rgb.mat')
 color3 = color(50:206,:);
 
-% 设定统一的 clim 以确保颜色一致
 clim_range = [-5 5];
 % set(gcf,'Units','centimeters','Position',[5 5 20 16])
 m_proj('miller','lon',[0 360],'lat',[-80 80]);hold on;
@@ -100,14 +97,14 @@ m_coast('patch',[.7 .7 .7],'edgecolor','k');
 colormap(color3);
 clim(clim_range);
 
-c = colorbar;  % 可以改成 'southoutside' 放到底部
+c = colorbar;  
 c.Location = 'eastoutside';
 c.FontSize = 11;
 c.FontWeight = 'bold';
 c.Limits = clim_range;
 c.Ticks = [-5 -2.5 0 2.5 5];
 c.TickLength = 0.005;
-c.Title.String = '\muW/m^3';  % 设置 colorbar 标注
+c.Title.String = '\muW/m^3';  
 c.Title.Position = [17 176.9304802261237 0];
 
 savefig('C:\Users\1\Desktop\陈儒nonlocal论文\figure\fig\supply\r-11deg.fig')
@@ -123,19 +120,18 @@ for i=1:12
 end
 % 计算 number(i)
 for i = 1:12
-    ind0 = sum(~isnan(squeeze(pir_24ym(:,:,4*i))), 'all'); % 统计非 NaN 值
+    ind0 = sum(~isnan(squeeze(pir_24ym(:,:,4*i))), 'all'); 
     ratio1 = find(abs(squeeze(pir_24ym(:,:,4*i)))./abs(pil(i)) > 0.1);
     ratio2 = find(abs(squeeze(pir_24ym(:,:,4*i)))./abs(pis(i)) > 0.1);
     % ratio3 = find(abs(squeeze(pir_24ym(:,:,4*i)))./(abs(pil(i))+abs(pis(i)))./2 > 0.1);
     ratio3 = find(abs(squeeze(pir_24ym(:,:,4*i)))./(abs(pil_24ym(:,:,4*i))+abs(pis_24ym(:,:,4*i)))./2 > 0.1);
-    ind1 = find(abs(squeeze(pir_24ym(:,:,4*i))) > 1e-07); % 统计满足阈值条件的元素
-    number(1,i) = numel(ratio1) ./ ind0; % 计算比例
+    ind1 = find(abs(squeeze(pir_24ym(:,:,4*i))) > 1e-07); 
+    number(1,i) = numel(ratio1) ./ ind0;
     number(2,i) = numel(ratio2) ./ ind0;
     number(3,i) = numel(ratio3) ./ ind0;
     number(4,i) = numel(ind1) ./ ind0;
 end
 
-% 创建图形
 figure
 plot(1:12, number(3,:)*100, 'Color', '#B22222', 'LineStyle', '-', 'LineWidth', 2, 'Marker', 'o', 'MarkerFaceColor', '#B22222');
 set(gca, 'FontSize', 12,'FontName','times new roman');
