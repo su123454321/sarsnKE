@@ -1,6 +1,4 @@
 clear; clc; close all;
-
-
 outputPath = 'C:\Users\1\Desktop\陈儒nonlocal论文\修订提交版\figures\';
 figWidth_cm = 18.4;     
 figHeight_cm = 21;      
@@ -37,9 +35,9 @@ pir2 = squeeze(pir_24ym(:,:,20));
 % pir1 = nanconv(squeeze(pir_24ym(:,:,4)), h, 'edge', 'nanout');
 % pir2 = nanconv(squeeze(pir_24ym(:,:,20)), h, 'edge', 'nanout');
 
-plot_data = {pil1, pil2; pis1, pis2; pir1, pir2};
+plot_data = {pil1, pil2; pis1, pis2; pir1, pir2}';
 
-clim_row1 = [-5e-6 5e-6]; clim_row2 = [-5e-6 5e-6]; clim_row3 = [-1e-4 1e-4]; 
+clim_row1 = [-5e-6 5e-6]; clim_row2 = [-1e-5 1e-5]; clim_row3 = [-1e-5 1e-5]; 
 row_clims = {clim_row1, clim_row2, clim_row3};
 
 figure('Units', 'centimeters', 'Position', [5, 5, figWidth_cm, figHeight_cm]);
@@ -110,5 +108,5 @@ for k = 1:6
         c.TickLabelInterpreter = 'tex';
     end
 end
-% --- 5. 导出为出版级TIFF ---
+% % --- 5. 导出为出版级TIFF ---
 % exportgraphics(gcf, [outputPath, 'Figure4.tiff'], 'Resolution', 300);
